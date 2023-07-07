@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-export const AddProperty = ({ seller }) => {
+export const AddProperty = ({ id }) => {
+  console.log(id)
   const params = useParams();
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
@@ -25,7 +26,7 @@ export const AddProperty = ({ seller }) => {
         bedrooms,
         bathrooms,
         image,
-        seller_id: params.id,
+        seller_id: id,
       }),
     })
       .then((response) => {
@@ -36,6 +37,7 @@ export const AddProperty = ({ seller }) => {
         }
       })
       .then((user) => {
+        console.log(user)
         alert("Property added");
         setError("");
         setTitle("");

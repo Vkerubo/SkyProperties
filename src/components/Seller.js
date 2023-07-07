@@ -40,7 +40,7 @@ const Seller = ({ user, setUser }) => {
         </nav>
         <Switch>
           <Route exact path={`/sellers/${params.id}/add_property`}>
-            <AddProperty seller={seller} />
+            <AddProperty id={params.id} />
           </Route>
           <Route exact path={`/sellers/${params.id}/sellers_profile`}>
             <Profile user={user} />
