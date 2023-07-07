@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 
 export const AddProperty = ({ id }) => {
-  console.log(id)
-  const params = useParams();
+  console.log(id);
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
   const [price, setPrice] = useState("");
@@ -37,7 +35,7 @@ export const AddProperty = ({ id }) => {
         }
       })
       .then((user) => {
-        console.log(user)
+        console.log(user);
         alert("Property added");
         setError("");
         setTitle("");
@@ -53,64 +51,127 @@ export const AddProperty = ({ id }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="signup-form">
-      <h2>Add Property</h2>
-      {error && <h2 style={{ color: 'red' }}>{error}</h2>}
+    <form onSubmit={handleSubmit} style={styles.form}>
+      <h2 style={styles.heading}>Add Property</h2>
+      {error && <h2 style={styles.error}>{error}</h2>}
       <div className="form-group">
-        <label htmlFor="title">Title:</label>
+        <label htmlFor="title" style={styles.label}>
+          Title:
+        </label>
         <input
           type="text"
           id="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          style={styles.input}
         />
       </div>
       <div className="form-group">
-        <label htmlFor="address">Address:</label>
+        <label htmlFor="address" style={styles.label}>
+          Address:
+        </label>
         <input
           type="text"
           id="address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
+          style={styles.input}
         />
       </div>
       <div className="form-group">
-        <label htmlFor="price">Price:</label>
+        <label htmlFor="price" style={styles.label}>
+          Price:
+        </label>
         <input
           type="number"
           id="price"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
+          style={styles.input}
         />
       </div>
       <div className="form-group">
-        <label htmlFor="bedrooms">Bedrooms:</label>
+        <label htmlFor="bedrooms" style={styles.label}>
+          Bedrooms:
+        </label>
         <input
           type="number"
           id="bedrooms"
           value={bedrooms}
           onChange={(e) => setBedrooms(e.target.value)}
+          style={styles.input}
         />
       </div>
       <div className="form-group">
-        <label htmlFor="bathrooms">Bathrooms:</label>
+        <label htmlFor="bathrooms" style={styles.label}>
+          Bathrooms:
+        </label>
         <input
           type="number"
           id="bathrooms"
           value={bathrooms}
           onChange={(e) => setBathrooms(e.target.value)}
+          style={styles.input}
         />
       </div>
       <div className="form-group">
-        <label htmlFor="images">Images:</label>
+        <label htmlFor="images" style={styles.label}>
+          Images:
+        </label>
         <input
           type="text"
           id="image"
           value={image}
           onChange={(e) => setImage(e.target.value)}
+          style={styles.input}
         />
       </div>
-      <button type="submit">Add Property</button>
+      <button type="submit" style={styles.button}>
+        Add Property
+      </button>
     </form>
   );
+};
+
+const styles = {
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    maxWidth: "400px",
+    margin: "0 auto",
+    padding: "40px",
+    backgroundColor: "#f5f5f5",
+    borderRadius: "8px",
+  },
+  heading: {
+    fontSize: "24px",
+    marginBottom: "20px",
+  },
+  error: {
+    color: "red",
+    marginTop: "10px",
+  },
+  label: {
+    fontSize: "16px",
+    marginBottom: "5px",
+  },
+  input: {
+    padding: "10px",
+    fontSize: "16px",
+    border: "1px solid #ddd",
+    borderRadius: "4px",
+    width: "100%",
+    marginBottom: "10px",
+  },
+  button: {
+    padding: "10px 20px",
+    fontSize: "16px",
+    backgroundColor: "#007bff",
+    color: "#fff",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer",
+    transition: "background-color 0.3s ease",
+  },
 };

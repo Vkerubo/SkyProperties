@@ -53,7 +53,7 @@ function BuyersHomePage({ property }) {
     return (
       <div key={house.id} className="property">
         <h2>{house.title}</h2>
-        <img src={house.image} alt="property" />
+        <img src={house.image} alt="property" className="property-image" />
         <p className="address">
           <em
             onClick={() => handleAddressClick(house.address)}
@@ -113,7 +113,132 @@ function BuyersHomePage({ property }) {
           <option value="bathrooms">Bathrooms</option>
         </select>
       </div>
-      {theProperties}
+      <div className="property-container">{theProperties}</div>
+      <style>{`
+        .container {
+          width: 100%; /* Set the container width to 100% */
+          padding: 20px;
+          background-color: #f9f9f9;
+          color: #333;
+        }
+
+        .search-bar {
+          display: flex;
+          align-items: center;
+          margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+          flex: 1;
+          padding: 8px;
+          font-size: 16px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          margin-right: 10px;
+        }
+
+        button {
+          padding: 8px 16px;
+          font-size: 16px;
+          background-color: #3c7fcf;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        select {
+          padding: 8px;
+          font-size: 16px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          background-color: #fff;
+          margin-left: 10px;
+        }
+
+        .property-container {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-gap: 20px;
+        }
+
+        .property {
+          padding: 20px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          background-color: #fff;
+        }
+
+        .property h2 {
+          margin-top: 0;
+        }
+
+        .property-image {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          margin-bottom: 10px;
+        }
+
+        .property .address {
+          margin-bottom: 10px;
+        }
+
+        .property .address-link {
+          cursor: pointer;
+          color: #3c7fcf;
+          text-decoration: underline;
+        }
+
+        .property p {
+          margin: 5px 0;
+        }
+
+        .modal-wrapper {
+          margin-top: 10px;
+        }
+
+        .modal-wrapper button {
+          background-color: #3c7fcf;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          padding: 8px 16px;
+        }
+
+        .modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 4px;
+        }
+
+        .close {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          cursor: pointer;
+        }
+
+        .close button {
+          background-color: transparent;
+          border: none;
+          font-size: 20px;
+          color: #ccc;
+        }
+      `}</style>
     </div>
   );
 }

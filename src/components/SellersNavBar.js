@@ -3,27 +3,83 @@ import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 export const SellersNavBar = ({ id, user, setUser }) => {
-  const history = useHistory()
+  const history = useHistory();
+
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
-        history.push("/")
+        history.push("/");
       }
     });
   }
+
   return (
-    <nav>
-      <NavLink exact to={`/sellers/${id}/sellers_home`}>
-        <h2>Home</h2>
+    <nav style={styles.navbar}>
+      <NavLink
+        exact
+        to={`/sellers/${id}/sellers_home`}
+        style={styles.navLink}
+        activeStyle={styles.activeNavLink}
+      >
+        <h2 style={styles.navLinkText}>Home</h2>
       </NavLink>
-      <NavLink exact to={`/sellers/${id}/add_property`}>
-        <h2>Add Property</h2>
+      <NavLink
+        exact
+        to={`/sellers/${id}/add_property`}
+        style={styles.navLink}
+        activeStyle={styles.activeNavLink}
+      >
+        <h2 style={styles.navLinkText}>Add Property</h2>
       </NavLink>
-      <NavLink exact to={`/sellers/${id}/sellers_profile`}>
-        <h2>Profile</h2>
+      <NavLink
+        exact
+        to={`/sellers/${id}/sellers_profile`}
+        style={styles.navLink}
+        activeStyle={styles.activeNavLink}
+      >
+        <h2 style={styles.navLinkText}>Profile</h2>
       </NavLink>
-      <button variant="outline" onClick={handleLogoutClick}>Logout</button>
+      <button
+        variant="outline"
+        style={styles.logoutButton}
+        onClick={handleLogoutClick}
+      >
+        Logout
+      </button>
     </nav>
   );
+};
+
+const styles = {
+  navbar: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "20px",
+    backgroundColor: "#f5f5f5",
+    borderBottom: "1px solid #ccc",
+  },
+  navLink: {
+    textDecoration: "none",
+    margin: "0 10px",
+    color: "#333",
+  },
+  activeNavLink: {
+    fontWeight: "bold",
+  },
+  navLinkText: {
+    fontSize: "18px",
+    fontWeight: "normal",
+    margin: "0",
+  },
+  logoutButton: {
+    backgroundColor: "#007bff",
+    color: "#fff",
+    border: "none",
+    borderRadius: "4px",
+    padding: "8px 16px",
+    fontSize: "16px",
+    cursor: "pointer",
+  },
 };

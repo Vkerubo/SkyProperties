@@ -1,16 +1,68 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Navbar from "./Navbar";
+import styled from "styled-components";
+
+const FormContainer = styled.div`
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+`;
+
+const FormTitle = styled.h2`
+  font-size: 24px;
+  margin-bottom: 20px;
+`;
+
+const ErrorMessage = styled.p`
+  color: red;
+  margin-top: 10px;
+`;
+
+const FormGroup = styled.div`
+  margin-bottom: 20px;
+`;
+
+const Label = styled.label`
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+`;
+
+const SubmitButton = styled.button`
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #315e6b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #214754;
+  }
+`;
 
 const LoginPage = ({ setUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const history = useHistory()
-  
+  const history = useHistory();
+
   const handleLogin = (e) => {
     e.preventDefault();
-  
+
     fetch("/login", {
       method: "POST",
       headers: {
@@ -23,7 +75,7 @@ const LoginPage = ({ setUser }) => {
           return response.json();
         } else {
           return response.json().then((data) => {
-            throw new Error("Login failed")
+            throw new Error("Login failed");
           });
         }
       })
@@ -33,43 +85,43 @@ const LoginPage = ({ setUser }) => {
 
         if (user.role.toLowerCase() === "seller") {
           history.push(`/sellers/${user.seller_id}/sellers_home`);
-        } 
-        else if (user.role.toLowerCase() === "buyer") {
-          history.push("/buyer/buyers_home"); // Add a forward slash before "buyer"
+        } else if (user.role.toLowerCase() === "buyer") {
+          history.push("/buyer/buyers_home");
         }
       })
       .catch((error) => {
         setError(error.message);
       });
   };
-  
 
   return (
     <div>
       <Navbar />
-      <form onSubmit={handleLogin} className="login-form">
-      <h2>Login</h2>
-      {error && <h2 style={{ color: 'red' }}>{error}</h2>}
-      <div className="form-group">
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <button type="submit">Login</button>
-    </form>
+      <FormContainer>
+        <FormTitle>Login</FormTitle>
+        {error && <ErrorMessage>{error}</ErrorMessage>}
+        <form onSubmit={handleLogin} className="login-form">
+          <FormGroup>
+            <Label htmlFor="username">Username:</Label>
+            <Input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="password">Password:</Label>
+            <Input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </FormGroup>
+          <SubmitButton type="submit">Login</SubmitButton>
+        </form>
+      </FormContainer>
     </div>
   );
 };

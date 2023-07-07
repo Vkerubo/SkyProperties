@@ -18,9 +18,9 @@ const Div = styled.div`
 
   .footer {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 50rem;
+    justify-content: space-between; /* Changed from justify-content: flex-start to align items in the center */
+    align-items: center; /* Changed from align-items: flex-start to align items in the center */
+    gap: 2rem; /* Adjusted the gap between elements */
     img {
       width: 40px;
       height: 40px;
@@ -36,7 +36,7 @@ const Div = styled.div`
     font-size: 1.2rem;
     display: flex;
     align-items: center;
-    gap: 3.5rem;
+    gap: 2rem; /* Adjusted the gap between elements */
     span {
       display: flex;
       align-items: center;
@@ -47,7 +47,7 @@ const Div = styled.div`
   .creator {
     color: #fff;
     font-size: 1.2rem;
-    margin-left: auto; /* Added margin-left: auto to push the content to the right */
+    margin-left: auto;
     a {
       text-decoration: none;
       color: #1460e5;

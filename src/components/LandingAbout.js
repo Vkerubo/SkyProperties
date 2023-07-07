@@ -16,6 +16,7 @@ const Description = styled.p`
   color: #f5f5f5;
   font-size: 16px;
   line-height: 1.5;
+  margin-bottom: 10px;
 `;
 
 const LandingAbout = () => {
