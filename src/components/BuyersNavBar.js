@@ -1,7 +1,16 @@
 import React from "react";
-import { NavLink } from "react-router-dom/cjs/react-router-dom";
+import { NavLink, useHistory } from "react-router-dom/cjs/react-router-dom";
 
-export const BuyersNavBar = () => {
+export const BuyersNavBar = ({ user, setUser }) => {
+  const history = useHistory();
+  function handleLogoutClick() {
+    fetch("/logout", { method: "DELETE" }).then((r) => {
+      if (r.ok) {
+        setUser(null);
+        history.push("/")
+      }
+    });
+  }
   return (
     <div>
       <div>
@@ -14,6 +23,7 @@ export const BuyersNavBar = () => {
         <NavLink exact to="/buyer/buyers_profile">
           <h2>Profile</h2>
         </NavLink>
+        <button  onClick={handleLogoutClick}>Logout</button>
       </div>
     </div>
   );

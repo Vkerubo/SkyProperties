@@ -22,7 +22,24 @@ function App() {
     });
   }, []);
 
-  if (!user) return <LoginPage setUser={setUser} />;
+  // If user is not logged in, restrict access to certain routes
+  if (!user) {
+    return (
+      <Router>
+        <Switch>
+          <Route exact path="/signup">
+            <SignUpPage setUser={setUser} />
+          </Route>
+          <Route path="/login">
+            <LoginPage setUser={setUser} />
+          </Route>
+          <Route path="/">
+            <LandingHome />
+          </Route>
+        </Switch>
+      </Router>
+    );
+  }
 
   return (
     <Router>
@@ -34,10 +51,10 @@ function App() {
           <LoginPage setUser={setUser} />
         </Route>
         <Route path="/sellers/:id/*">
-          <Seller user={user} />
+          <Seller user={user} setUser={setUser} />
         </Route>
         <Route path="/buyer">
-          <Buyer user={user} />
+          <Buyer user={user} setUser={setUser} />
           <Redirect to="/buyer/buyers_home" />
         </Route>
         <Route path="/">

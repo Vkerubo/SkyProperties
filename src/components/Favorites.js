@@ -1,7 +1,8 @@
 import React from "react";
 
 export const Favorites = ({ favorites }) => {
-    console.log(favorites)
+  console.log(favorites);
+  
   const handleDelete = (favoriteId) => {
     fetch(`/favorites/${favoriteId}`, {
       method: "DELETE",
@@ -20,8 +21,12 @@ export const Favorites = ({ favorites }) => {
       });
   };
 
-  const buyerFavorites = favorites?.map((favorite) => {
-    return (
+  let buyerFavorites;
+
+  if (favorites && favorites.error) {
+    buyerFavorites = <h2 style={{ color: "red" }}>You currently have no favorites</h2>;
+  } else if (favorites && Array.isArray(favorites)) {
+    buyerFavorites = favorites.map((favorite) => (
       <div key={favorite.property.id}>
         <h2>Title: {favorite.property.title}</h2>
         <img src={favorite.property.image} alt="fav" />
@@ -29,12 +34,12 @@ export const Favorites = ({ favorites }) => {
         <h4>Price: {favorite.property.price}</h4>
         <h4>Bedrooms: {favorite.property.bedrooms}</h4>
         <h4>Bathrooms: {favorite.property.bathrooms}</h4>
-        <button onClick={() => handleDelete(favorite.id)}>
-          Delete
-        </button>
+        <button onClick={() => handleDelete(favorite.id)}>Delete</button>
       </div>
-    );
-  });
-
+    ));
+  } else {
+    buyerFavorites = <h2>Loading favorites...</h2>; // or any other loading state
+  }
+  
   return <div>{buyerFavorites}</div>;
 };

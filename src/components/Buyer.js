@@ -3,14 +3,13 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useHistory,
 } from "react-router-dom";
 import BuyersHomePage from "./BuyersHomePage";
 import { BuyersNavBar } from "./BuyersNavBar";
 import { Favorites } from "./Favorites";
 import { Profile } from "./Profile";
 
-export const Buyer = ({ user }) => {
+export const Buyer = ({ user, setUser }) => {
   const [favorites, setFavorites] = useState([]);
   const [property, setProperty] = useState([])
 
@@ -34,7 +33,7 @@ export const Buyer = ({ user }) => {
     <Router>
       <div>
         <nav>
-          <BuyersNavBar />
+          <BuyersNavBar user={user} setUser={setUser} />
         </nav>
         <Switch>
           <Route exact path="/buyer/favorites">

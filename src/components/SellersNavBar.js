@@ -1,9 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
-export const SellersNavBar = ({ id }) => {
+export const SellersNavBar = ({ id, user, setUser }) => {
+  const history = useHistory()
+  function handleLogoutClick() {
+    fetch("/logout", { method: "DELETE" }).then((r) => {
+      if (r.ok) {
+        setUser(null);
+        history.push("/")
+      }
+    });
+  }
   return (
-    <div>
+    <nav>
       <NavLink exact to={`/sellers/${id}/sellers_home`}>
         <h2>Home</h2>
       </NavLink>
@@ -13,6 +23,7 @@ export const SellersNavBar = ({ id }) => {
       <NavLink exact to={`/sellers/${id}/sellers_profile`}>
         <h2>Profile</h2>
       </NavLink>
-    </div>
+      <button variant="outline" onClick={handleLogoutClick}>Logout</button>
+    </nav>
   );
 };

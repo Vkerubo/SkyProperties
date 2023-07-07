@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 export const Profile = ({ user }) => {
-  console.log(user);
   const [username, setUsername] = useState(user?.username || "");
   const [email, setEmail] = useState(user?.email || "");
   const [phone, setPhone] = useState(user?.phone || "");

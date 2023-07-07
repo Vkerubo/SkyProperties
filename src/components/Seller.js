@@ -11,7 +11,7 @@ import { AddProperty } from "./AddProperty";
 import { Profile } from "./Profile";
 import { SellersHomePage } from "./SellersHomePage";
 
-const Seller = ({ user }) => {
+const Seller = ({ user, setUser }) => {
   const [seller, setSeller] = useState({});
   const params = useParams();
   const history = useHistory();
@@ -30,13 +30,13 @@ const Seller = ({ user }) => {
         history.push(`/sellers/${params.id}/sellers_home`);
       })
       .catch((error) => console.log(error));
-  }, [params.id]);
+  }, [params.id, history]);
 
   return (
     <Router>
       <div>
         <nav>
-          <SellersNavBar id={params.id} />
+          <SellersNavBar id={params.id} user={user} setUser={setUser} />
         </nav>
         <Switch>
           <Route exact path={`/sellers/${params.id}/add_property`}>

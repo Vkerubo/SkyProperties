@@ -39,7 +39,7 @@ const SignUpPage = ({ setUser }) => {
         setUser(user);
         setError(""); // Reset the error state if login is successful
         if (user.role.toLowerCase() === "seller") {
-          history.push(`/sellers/${user.seller_id}`);
+          history.push(`/sellers/${user.seller_id}/sellers_home`);
         }
         else if (user.role.toLowerCase() === "buyer") {
           history.push("/buyer"); // Add a forward slash before "buyer"
