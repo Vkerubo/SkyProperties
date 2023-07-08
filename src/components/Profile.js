@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export const Profile = ({ user }) => {
   const [username, setUsername] = useState(user?.username || "");
   const [email, setEmail] = useState(user?.email || "");
   const [phone, setPhone] = useState(user?.phone || "");
   const [error, setError] = useState("");
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,6 +34,27 @@ export const Profile = ({ user }) => {
       })
       .catch((error) => {
         setError("Error updating profile");
+      });
+  };
+
+  const handleDeleteAccount = () => {
+    fetch(`/users/${user.id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Account deleted successfully");
+          // Perform logout logic here (if needed)
+
+          // Redirect to the landing page
+          // Assuming you are using React Router, you can use the `history` object to navigate
+          history.push("/"); // Replace "/" with the actual path of your landing page
+        } else {
+          throw new Error("Deletion failed");
+        }
+      })
+      .catch((error) => {
+        setError("Error deleting account");
       });
   };
 
@@ -78,6 +101,13 @@ export const Profile = ({ user }) => {
         </div>
         <button type="submit" style={styles.button}>
           Update Profile
+        </button>
+        <button
+          type="button"
+          style={styles.deleteButton}
+          onClick={handleDeleteAccount}
+        >
+          Delete Account
         </button>
       </form>
     </div>
@@ -132,5 +162,15 @@ const styles = {
     padding: "8px 16px",
     fontSize: "16px",
     cursor: "pointer",
+  },
+  deleteButton: {
+    backgroundColor: "red",
+    color: "#fff",
+    border: "none",
+    borderRadius: "4px",
+    padding: "8px 16px",
+    fontSize: "16px",
+    cursor: "pointer",
+    marginTop: "10px",
   },
 };
