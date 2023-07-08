@@ -105,6 +105,33 @@ const Button = styled.a`
   text-decoration: none;
 `;
 
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+`;
+
+const ModalContent = styled.div`
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  text-align: center;
+`;
+
+const CloseButton = styled.span`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+`;
+
 const LandingHome = () => {
   const signupButtonStyle = {
     backgroundColor: "#bbb",
@@ -117,13 +144,16 @@ const LandingHome = () => {
   };
 
   const [showModal, setShowModal] = useState(false);
+  const history = useHistory();
 
   const openModal = () => {
     setShowModal(true);
+    history.push("/estimate");
   };
 
   const closeModal = () => {
     setShowModal(false);
+    history.goBack();
   };
 
   return (
@@ -145,7 +175,14 @@ const LandingHome = () => {
           <Button onClick={openModal}>GET AN ESTIMATE</Button>
         </CardContainer>
       </BackgroundImage>
-      {showModal && <EstimatePropertyPage closeModal={closeModal} />}
+      {showModal && (
+        <ModalOverlay>
+          <ModalContent>
+            <CloseButton onClick={closeModal}>&times;</CloseButton>
+            <EstimatePropertyPage closeModal={closeModal} />
+          </ModalContent>
+        </ModalOverlay>
+      )}
       <h3>
         Sign up today to check our beautiful property listings{" "}
         <Link to="/signup">
