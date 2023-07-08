@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 
 const Form = styled.form`
   display: flex;
@@ -41,6 +41,7 @@ const EstimatePropertyPage = ({ closeModal }) => {
   const [numBedrooms, setNumBedrooms] = useState("");
   const [numBathrooms, setNumBathrooms] = useState("");
   const [estimatePrice, setEstimatePrice] = useState(0);
+  const history = useHistory();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -72,7 +73,6 @@ const EstimatePropertyPage = ({ closeModal }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
 
     // Calculate the estimate price based on the input values
     const calculatedPrice = calculatePrice(
@@ -203,10 +203,9 @@ const EstimatePropertyPage = ({ closeModal }) => {
           <p>${estimatePrice}</p>
         </div>
       )}
-      <button onClick={closeModal}>Close</button>
+      <button onClick={handleClose}>Close</button>
     </div>
   );
 };
 
 export default EstimatePropertyPage;
-
