@@ -11,6 +11,7 @@ const Form = styled.form`
 
 const FormGroup = styled.div`
   margin-bottom: 20px;
+  display: ${props => (props.visible ? "block" : "none")};
 `;
 
 const Label = styled.label`
@@ -41,6 +42,7 @@ const EstimatePropertyPage = ({ closeModal }) => {
   const [numBedrooms, setNumBedrooms] = useState("");
   const [numBathrooms, setNumBathrooms] = useState("");
   const [estimatePrice, setEstimatePrice] = useState(0);
+  const [currentFormGroup, setCurrentFormGroup] = useState(0);
   const history = useHistory();
 
   const handleEmailChange = (e) => {
@@ -65,6 +67,14 @@ const EstimatePropertyPage = ({ closeModal }) => {
 
   const handleNumBathroomsChange = (e) => {
     setNumBathrooms(e.target.value);
+  };
+
+  const handlePrevious = () => {
+    setCurrentFormGroup((prev) => Math.max(prev - 1, 0));
+  };
+
+  const handleNext = () => {
+    setCurrentFormGroup((prev) => prev + 1);
   };
 
   const handleClose = () => {
@@ -130,12 +140,19 @@ const EstimatePropertyPage = ({ closeModal }) => {
     console.log("Body:", body);
   };
 
+  const isCurrentFormGroup = (index) => {
+    return index === currentFormGroup;
+  };
+
+  const isFirstFormGroup = currentFormGroup === 0;
+  const isLastFormGroup = currentFormGroup === 5; // Update this value if you have more form groups
+
   return (
     <div className="estimate-property-page">
       <h3>Thinking of selling your home?</h3>
       <h1>Get a free home value estimate now.</h1>
       <Form onSubmit={handleSubmit}>
-        <FormGroup>
+        <FormGroup visible={isCurrentFormGroup(0)}>
           <Label htmlFor="email">Enter your email:</Label>
           <Input
             type="email"
@@ -144,8 +161,14 @@ const EstimatePropertyPage = ({ closeModal }) => {
             onChange={handleEmailChange}
             required
           />
+          {!isFirstFormGroup && (
+            <Button onClick={handlePrevious}>Previous</Button>
+          )}
+          {!isLastFormGroup && (
+            <Button onClick={handleNext}>Next</Button>
+          )}
         </FormGroup>
-        <FormGroup>
+        <FormGroup visible={isCurrentFormGroup(1)}>
           <Label htmlFor="address">Home Address:</Label>
           <Input
             type="text"
@@ -154,8 +177,14 @@ const EstimatePropertyPage = ({ closeModal }) => {
             onChange={handleAddressChange}
             required
           />
+          {!isFirstFormGroup && (
+            <Button onClick={handlePrevious}>Previous</Button>
+          )}
+          {!isLastFormGroup && (
+            <Button onClick={handleNext}>Next</Button>
+          )}
         </FormGroup>
-        <FormGroup>
+        <FormGroup visible={isCurrentFormGroup(2)}>
           <Label htmlFor="property-size">Property Size (sqft):</Label>
           <Input
             type="number"
@@ -164,8 +193,13 @@ const EstimatePropertyPage = ({ closeModal }) => {
             onChange={handlePropertySizeChange}
             required
           />
+          {!isFirstFormGroup && (
+            <Button onClick={handlePrevious}>Previous</Button>
+          )}
+          {!isLastFormGroup && (
+            <Button onClick={handleNext}>Next</Button>)}
         </FormGroup>
-        <FormGroup>
+        <FormGroup visible={isCurrentFormGroup(3)}>
           <Label htmlFor="num-stories">Number of Stories:</Label>
           <Input
             type="number"
@@ -174,8 +208,14 @@ const EstimatePropertyPage = ({ closeModal }) => {
             onChange={handleNumStoriesChange}
             required
           />
+          {!isFirstFormGroup && (
+            <Button onClick={handlePrevious}>Previous</Button>
+          )}
+          {!isLastFormGroup && (
+            <Button onClick={handleNext}>Next</Button>
+          )}
         </FormGroup>
-        <FormGroup>
+        <FormGroup visible={isCurrentFormGroup(4)}>
           <Label htmlFor="num-bedrooms">Number of Bedrooms:</Label>
           <Input
             type="number"
@@ -184,8 +224,14 @@ const EstimatePropertyPage = ({ closeModal }) => {
             onChange={handleNumBedroomsChange}
             required
           />
+          {!isFirstFormGroup && (
+            <Button onClick={handlePrevious}>Previous</Button>
+          )}
+          {!isLastFormGroup && (
+            <Button onClick={handleNext}>Next</Button>
+          )}
         </FormGroup>
-        <FormGroup>
+        <FormGroup visible={isCurrentFormGroup(5)}>
           <Label htmlFor="num-bathrooms">Number of Bathrooms:</Label>
           <Input
             type="number"
@@ -194,8 +240,16 @@ const EstimatePropertyPage = ({ closeModal }) => {
             onChange={handleNumBathroomsChange}
             required
           />
+          {!isFirstFormGroup && (
+            <Button onClick={handlePrevious}>Previous</Button>
+          )}
+          {!isLastFormGroup && (
+            <Button onClick={handleNext}>Next</Button>
+          )}
         </FormGroup>
-        <Button type="submit">Get Property Value Estimate</Button>
+        <Button type="submit">
+          {isLastFormGroup ? "Get Property Value Estimate" : "Next"}
+        </Button>
       </Form>
       {estimatePrice > 0 && (
         <div>
@@ -203,9 +257,10 @@ const EstimatePropertyPage = ({ closeModal }) => {
           <p>${estimatePrice}</p>
         </div>
       )}
-      <button onClick={handleClose}>Close</button>
+      <Button onClick={handleClose}>Close</Button>
     </div>
   );
 };
 
 export default EstimatePropertyPage;
+
