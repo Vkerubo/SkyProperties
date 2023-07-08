@@ -83,8 +83,8 @@ const CardContainer = styled.div`
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 10px;
+  right: 10px;
 `;
 
 const CardTitle = styled.h3`
