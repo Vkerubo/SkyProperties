@@ -7,20 +7,19 @@ const Div = styled.div`
   padding: 1.5rem;
   gap: 1rem;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center; /* Added align-items: center */
 
   .name {
     color: #fff;
     font-size: 1.2rem;
-    margin-bottom: 1rem;
+    margin-right: auto; /* Added margin-right: auto */
   }
 
   .footer {
     display: flex;
-    justify-content: space-between; /* Changed from justify-content: flex-start to align items in the center */
-    align-items: center; /* Changed from align-items: flex-start to align items in the center */
-    gap: 2rem; /* Adjusted the gap between elements */
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
     img {
       width: 40px;
       height: 40px;
@@ -36,7 +35,7 @@ const Div = styled.div`
     font-size: 1.2rem;
     display: flex;
     align-items: center;
-    gap: 2rem; /* Adjusted the gap between elements */
+    gap: 2rem;
     span {
       display: flex;
       align-items: center;
@@ -57,6 +56,7 @@ const Div = styled.div`
     /* Media queries styling here */
   }
 `;
+
 
 const Contact = () => {
   return (
