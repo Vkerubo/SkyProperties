@@ -18,7 +18,7 @@ function Navbar() {
           Home
         </a>
         <a href="/login" style={linkStyle}>
-          Sign In
+          Login
         </a>
         <a href="/signup" style={linkStyle}>
           Sign Up
