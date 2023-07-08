@@ -63,7 +63,7 @@ const styles = {
   navLink: {
     textDecoration: "none",
     margin: "0 10px",
-    color: "#333",
+    color: "#fff",
   },
   activeNavLink: {
     fontWeight: "bold",
@@ -74,7 +74,7 @@ const styles = {
     margin: "0",
   },
   logoutButton: {
-    backgroundColor: "#007bff",
+    backgroundColor: "#315e6b",
     color: "#fff",
     border: "none",
     borderRadius: "4px",
