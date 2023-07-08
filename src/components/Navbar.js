@@ -5,11 +5,24 @@ function Navbar() {
 
   return (
     <header style={headerStyle}>
-      <h3 style={titleStyle}>Sky Properties</h3>
+      <div style={logoContainerStyle}>
+        <img
+          src="https://cdn.pixabay.com/photo/2017/04/08/18/46/house-2214100_640.png"
+          alt="Company Logo"
+          style={logoStyle}
+        />
+        <h3 style={titleStyle}>Sky Properties</h3>
+      </div>
       <nav ref={navRef}>
-        <a href="/" style={linkStyle}>Home</a>
-        <a href="/login" style={linkStyle}>Sign In</a>
-        <a href="/signup" style={linkStyle}>Sign Up</a>
+        <a href="/" style={linkStyle}>
+          Home
+        </a>
+        <a href="/login" style={linkStyle}>
+          Sign In
+        </a>
+        <a href="/signup" style={linkStyle}>
+          Sign Up
+        </a>
       </nav>
     </header>
   );
@@ -27,8 +40,19 @@ const headerStyle = {
   alignItems: "center",
 };
 
+const logoContainerStyle = {
+  display: "flex",
+  alignItems: "center",
+};
+
+const logoStyle = {
+  width: "40px",
+  height: "40px",
+  marginRight: "10px",
+};
+
 const titleStyle = {
-  fontSize: "24px",
+  fontSize: "30px",
   margin: "0",
 };
 
@@ -37,4 +61,3 @@ const linkStyle = {
   textDecoration: "none",
   marginRight: "10px",
 };
-
