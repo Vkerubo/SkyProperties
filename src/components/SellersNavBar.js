@@ -57,7 +57,7 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center",
     padding: "20px",
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#333",
     borderBottom: "1px solid #ccc",
   },
   navLink: {

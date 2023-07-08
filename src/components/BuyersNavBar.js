@@ -58,7 +58,7 @@ const styles = {
   navLink: {
     textDecoration: "none",
     margin: "0 10px",
-    color: "#ccc",
+    color: "#fff",
     transition: "background-color 0.3s, transform 0.3s",
     padding: "8px 16px",
     borderRadius: "4px",
