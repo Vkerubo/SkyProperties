@@ -37,7 +37,7 @@ export const BuyersNavBar = ({ user, setUser }) => {
         style={styles.navLink}
         activeStyle={styles.activeNavLink}
       >
-        <h2 style={styles.navLinkText}>Profile</h2>
+        <h2 style={styles.navLinkText}>My Profile</h2>
       </NavLink>
       <button style={styles.logoutButton} onClick={handleLogoutClick}>
         Logout
