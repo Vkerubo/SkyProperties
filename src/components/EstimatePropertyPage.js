@@ -248,7 +248,7 @@ const EstimatePropertyPage = ({ closeModal }) => {
           )}
         </FormGroup>
         <Button type="submit">
-          {isLastFormGroup ? "Get Property Value Estimate" : "Next"}
+          {isLastFormGroup ? "Get Property Value Estimate" : "Click next to continue"}
         </Button>
       </Form>
       {estimatePrice > 0 && (
