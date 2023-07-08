@@ -69,6 +69,10 @@ const EstimatePropertyPage = ({ closeModal }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const handleClose = () => {
+      history.push("/"); // Navigate back to the LandingPage route
+    };
+
     // Calculate the estimate price based on the input values
     const calculatedPrice = calculatePrice(
       propertySize,
