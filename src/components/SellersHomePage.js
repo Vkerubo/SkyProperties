@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Styles } from "styled-components";
 
 export const SellersHomePage = ({ seller }) => {
-  const sellerProperties = seller?.properties;
+  const [sellerProperties, setSellerProperties] = useState(seller?.properties);
 
   const handleUpdateProperty = async (propertyId, updatedData) => {
     try {
       // Make an API request to update the property
       const response = await axios.put(
-        `/api/properties/${propertyId}`,
+        `/properties/${propertyId}`,
         updatedData
       );
       // Handle the response and update the UI if needed
@@ -19,16 +19,19 @@ export const SellersHomePage = ({ seller }) => {
     }
   };
 
-  const handleDeleteProperty = async (propertyId) => {
-    try {
-      // Make an API request to delete the property
-      const response = await axios.delete(`/api/properties/${propertyId}`);
-      // Handle the response and update the UI if needed
-      console.log("Property deleted:", response.data);
-    } catch (error) {
-      console.error("Error deleting property:", error);
-    }
-  };
+const handleDeleteProperty = async (propertyId) => {
+  try {
+    // Make an API request to delete the property
+    await axios.delete(`/properties/${propertyId}`);
+    // Remove the deleted property from the UI state
+    setSellerProperties((prevProperties) =>
+      prevProperties.filter((property) => property.id !== propertyId)
+    );
+  } catch (error) {
+    console.error("Error deleting property:", error);
+  }
+};
+
 
   const myProperties = sellerProperties?.map((property) => {
     const { id, title, image, price, bathrooms, bedrooms } = property;
@@ -87,4 +90,3 @@ const styles = {
     marginBottom: "5px",
   },
 };
-
