@@ -98,7 +98,7 @@ const CardDescription = styled.p`
 const Button = styled.a`
   background-color: #333;
   color: #fff;
-  padding: 10px 20px;
+  padding: 10px 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;

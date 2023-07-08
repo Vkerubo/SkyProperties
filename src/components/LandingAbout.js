@@ -24,13 +24,14 @@ const LandingAbout = () => {
     <AboutContainer>
       <Title>About Us</Title>
       <Description>
-        Buyer Side: Find your dream home effortlessly. Discover the perfect
-        property with personalized recommendations and intuitive search filters.
+        We are here to help you unlock the Perfect Home.
       </Description>
       <Description>
-        Seller Side: Sell your house effortlessly. Attract interested buyers,
-        negotiate offers, and close deals efficiently with our user-friendly
-        platform.
+        Discover your dream home or sell with confidence. We make dreams meet
+        reality.
+      </Description>
+      <Description>
+        Join us today!
       </Description>
     </AboutContainer>
   );
