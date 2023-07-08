@@ -72,7 +72,7 @@ const styles = {
     margin: "0",
   },
   logoutButton: {
-    backgroundColor: "#007bff",
+    backgroundColor: "#315e6b",
     color: "#fff",
     border: "none",
     borderRadius: "4px",
