@@ -61,7 +61,10 @@ const Div = styled.div`
 const Contact = () => {
   return (
     <Div>
-      <div className="name">Sky Properties</div>
+      <div className="name">
+        © {new Date().getFullYear()} Skyproperties. All Rights Reserved
+      </div>
+
       <div className="footer">
         <div className="contact-info">
           <span>
