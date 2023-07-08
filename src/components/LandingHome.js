@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import LandingAbout from "./LandingAbout";
 import Services from "./Services";
 import Contact from "./Contact";
+import EstimatePropertyPage from "./EstimatePropertyPage";
 
 const BackgroundImage = styled.div`
   background-image: url("https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
@@ -68,7 +69,6 @@ const photos = [
   // Add more photo URLs as needed
 ];
 
-
 const CardContainer = styled.div`
   background-color: #fff;
   border-radius: 10px;
@@ -105,6 +105,33 @@ const Button = styled.a`
   text-decoration: none;
 `;
 
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+`;
+
+const ModalContent = styled.div`
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  text-align: center;
+`;
+
+const CloseButton = styled.span`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+`;
+
 const LandingHome = () => {
   const signupButtonStyle = {
     backgroundColor: "#bbb",
@@ -114,6 +141,16 @@ const LandingHome = () => {
     borderRadius: "4px",
     cursor: "pointer",
     textDecoration: "none",
+  };
+
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -132,11 +169,21 @@ const LandingHome = () => {
             Thinking of selling your home? Find out what your home is worth in
             today's market.
           </CardDescription>
-          <Button href="https://laxhomevalues.com/" target="_blank">
-            GET AN ESTIMATE
-          </Button>
+          <Button onClick={openModal}>GET AN ESTIMATE</Button>
         </CardContainer>
       </BackgroundImage>
+      {showModal && (
+        <ModalOverlay>
+          <ModalContent>
+            <CloseButton onClick={closeModal}>&times;</CloseButton>
+            <Route
+              exact
+              path="/estimate"
+              render={() => <EstimatePropertyPage closeModal={closeModal} />}
+            />
+          </ModalContent>
+        </ModalOverlay>
+      )}
       <h3>
         Sign up today to check our beautiful property listings{" "}
         <Link to="/signup">

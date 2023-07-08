@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { FaHome } from "react-icons/fa";
 import styled from "styled-components";
 
+
 const Header = styled.header`
   background-color: #333;
   color: #fff;

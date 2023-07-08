@@ -97,13 +97,15 @@ function BuyersHomePage({ property }) {
   return (
     <div className="container">
       <div className="search-bar">
-        <input
-          type="text"
-          placeholder="Search Address"
-          value={searchTerm}
-          onChange={handleSearch}
-        />
-        <button onClick={handleSearch}>Search</button>
+        <div className="search-input-wrapper">
+          <input
+            type="text"
+            placeholder="Search Address"
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+          <button onClick={handleSearch}>Search</button>
+        </div>
         <select value={sortBy} onChange={handleSort}>
           <option value="">Sort By</option>
           <option value="alphabetical">Alphabetical</option>
@@ -116,7 +118,7 @@ function BuyersHomePage({ property }) {
       <div className="property-container">{theProperties}</div>
       <style>{`
         .container {
-          padding: 20px;
+          padding: 0px;
           background-color: #f9f9f9;
           color: #333;
         }
@@ -124,16 +126,25 @@ function BuyersHomePage({ property }) {
         .search-bar {
           display: flex;
           align-items: center;
+          justify-content: space-between;
           margin-bottom: 20px;
+          margin-left: 20px;
         }
 
-        input[type="text"] {
+       .search-input-wrapper {
+          display: flex;
+          align-items: center;
+          flex-grow: 1;
+          border-radius: 5px;
+          overflow: hidden;
+        }
+
+       input[type="text"] {
           flex: 1;
           padding: 8px;
           font-size: 16px;
           border: 1px solid #ccc;
-          border-radius: 4px;
-          margin-right: 10px;
+          border-right: none; /* Remove right border to prevent overlapping with the button */
         }
 
         button {
@@ -150,9 +161,10 @@ function BuyersHomePage({ property }) {
           padding: 8px;
           font-size: 16px;
           border: 1px solid #ccc;
-          border-radius: 4px;
+          border-radius: 20px;
           background-color: #fff;
-          margin-left: 10px;
+          margin-left: 60px;
+          margin-right: 20px;
         }
 
         .property-container {
@@ -201,7 +213,7 @@ function BuyersHomePage({ property }) {
           background-color: #315e6b;
           color: #fff;
           border: none;
-          border-radius: 4px;
+          border-radius: 40px;
           cursor: pointer;
           padding: 8px 16px;
         }
@@ -232,10 +244,10 @@ function BuyersHomePage({ property }) {
         }
 
         .close button {
-          background-color: transparent;
+          background-color: white;
           border: none;
           font-size: 20px;
-          color: #ccc;
+          color: #333;
         }
       `}</style>
     </div>
