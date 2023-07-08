@@ -75,7 +75,7 @@ const Contact = () => {
           </span>
         </div>
         <div className="creator">
-          Created by <a href="https://github.com/lewis-ma">G3Rails</a>
+          Websites by <a href="https://github.com/lewis-ma">G3Rails</a>
         </div>
       </div>
     </Div>
