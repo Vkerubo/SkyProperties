@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 
 export const Profile = ({ user }) => {
   const [username, setUsername] = useState(user?.username || "");
@@ -43,11 +43,9 @@ export const Profile = ({ user }) => {
     })
       .then((response) => {
         if (response.ok) {
-          alert("Account deleted successfully");
           // Perform logout logic here (if needed)
 
           // Redirect to the landing page
-          // Assuming you are using React Router, you can use the `history` object to navigate
           history.push("/"); // Replace "/" with the actual path of your landing page
         } else {
           throw new Error("Deletion failed");
