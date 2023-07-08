@@ -22,7 +22,7 @@ export const SellersNavBar = ({ id, user, setUser }) => {
         style={styles.navLink}
         activeStyle={styles.activeNavLink}
       >
-        <h2 style={styles.navLinkText}>Home</h2>
+        <h2 style={styles.navLinkText}>My listings</h2>
       </NavLink>
       <NavLink
         exact
