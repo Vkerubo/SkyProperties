@@ -1,6 +1,38 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 
-function EstimatePropertyPage({ closeModal }) {
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+`;
+
+const FormGroup = styled.div`
+  margin-bottom: 20px;
+`;
+
+const Label = styled.label`
+  font-weight: bold;
+  margin-bottom: 5px;
+`;
+
+const Input = styled.input`
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+const Button = styled.button`
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
+const EstimatePropertyPage = ({ closeModal }) => {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [propertySize, setPropertySize] = useState("");
@@ -96,57 +128,69 @@ function EstimatePropertyPage({ closeModal }) {
     <div className="estimate-property-page">
       <h3>Thinking of selling your home?</h3>
       <h1>Get a free home value estimate now.</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Enter your email:</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={handleEmailChange}
-          required
-        />
-        <label htmlFor="address">Home Address:</label>
-        <input
-          type="text"
-          id="address"
-          value={address}
-          onChange={handleAddressChange}
-          required
-        />
-        <label htmlFor="property-size">Property Size (sqft):</label>
-        <input
-          type="number"
-          id="property-size"
-          value={propertySize}
-          onChange={handlePropertySizeChange}
-          required
-        />
-        <label htmlFor="num-stories">Number of Stories:</label>
-        <input
-          type="number"
-          id="num-stories"
-          value={numStories}
-          onChange={handleNumStoriesChange}
-          required
-        />
-        <label htmlFor="num-bedrooms">Number of Bedrooms:</label>
-        <input
-          type="number"
-          id="num-bedrooms"
-          value={numBedrooms}
-          onChange={handleNumBedroomsChange}
-          required
-        />
-        <label htmlFor="num-bathrooms">Number of Bathrooms:</label>
-        <input
-          type="number"
-          id="num-bathrooms"
-          value={numBathrooms}
-          onChange={handleNumBathroomsChange}
-          required
-        />
-        <button type="submit">Get Property Value Estimate</button>
-      </form>
+      <Form onSubmit={handleSubmit}>
+        <FormGroup>
+          <Label htmlFor="email">Enter your email:</Label>
+          <Input
+            type="email"
+            id="email"
+            value={email}
+            onChange={handleEmailChange}
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="address">Home Address:</Label>
+          <Input
+            type="text"
+            id="address"
+            value={address}
+            onChange={handleAddressChange}
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="property-size">Property Size (sqft):</Label>
+          <Input
+            type="number"
+            id="property-size"
+            value={propertySize}
+            onChange={handlePropertySizeChange}
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="num-stories">Number of Stories:</Label>
+          <Input
+            type="number"
+            id="num-stories"
+            value={numStories}
+            onChange={handleNumStoriesChange}
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="num-bedrooms">Number of Bedrooms:</Label>
+          <Input
+            type="number"
+            id="num-bedrooms"
+            value={numBedrooms}
+            onChange={handleNumBedroomsChange}
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="num-bathrooms">Number of Bathrooms:</Label>
+          <Input
+            type="number"
+            id="num-bathrooms"
+            value={numBathrooms}
+            onChange={handleNumBathroomsChange}
+            required
+          />
+        </FormGroup>
+        <Button type="submit">Get Property Value Estimate</Button>
+      </Form>
       {estimatePrice > 0 && (
         <div>
           <h2>Property Value Estimate:</h2>
@@ -156,6 +200,7 @@ function EstimatePropertyPage({ closeModal }) {
       <button onClick={closeModal}>Close</button>
     </div>
   );
-}
+};
 
 export default EstimatePropertyPage;
+
