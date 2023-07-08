@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { Link, Route } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Navbar from "./Navbar";
 import LandingAbout from "./LandingAbout";
 import Services from "./Services";
