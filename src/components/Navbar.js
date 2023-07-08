@@ -15,8 +15,8 @@ function Navbar() {
         <h3 style={titleStyle}>Sky Properties</h3>
       </div>
       <nav ref={navRef}>
-        <a href="/" style={linkStyle}>
-          <FaHome style={{ color: linkStyle.color }} />
+        <a href="/" style={{ ...linkStyle, marginRight: "35px" }}>
+          <FaHome style={{ color: linkStyle.color, fontSize: "24px" }} />
         </a>
         <a href="/login" style={linkStyle}>
           Login
