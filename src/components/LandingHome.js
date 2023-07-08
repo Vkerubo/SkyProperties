@@ -68,6 +68,43 @@ const photos = [
   // Add more photo URLs as needed
 ];
 
+
+const CardContainer = styled.div`
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: calc(33.3333% - 20px);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+`;
+
+const CardTitle = styled.h3`
+  /* Add your card title styles here */
+`;
+
+const CardDescription = styled.p`
+  /* Add your card description styles here */
+`;
+
+const Button = styled.a`
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+`;
+
 const LandingHome = () => {
   const signupButtonStyle = {
     backgroundColor: "#bbb",
@@ -89,6 +126,16 @@ const LandingHome = () => {
           </Subtitle>
           <Quote>"Home is where your story begins."</Quote>
         </ContentWrapper>
+        <CardContainer>
+          <CardTitle>FREE HOME VALUATION</CardTitle>
+          <CardDescription>
+            Thinking of selling your home? Find out what your home is worth in
+            today's market.
+          </CardDescription>
+          <Button href="https://laxhomevalues.com/" target="_blank">
+            GET AN ESTIMATE
+          </Button>
+        </CardContainer>
       </BackgroundImage>
       <h3>
         Sign up today to check our beautiful property listings{" "}
