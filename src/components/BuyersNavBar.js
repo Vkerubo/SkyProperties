@@ -21,7 +21,7 @@ export const BuyersNavBar = ({ user, setUser }) => {
         style={styles.navLink}
         activeStyle={styles.activeNavLink}
       >
-        <h2 style={styles.navLinkText}>Home</h2>
+        <h2 style={styles.navLinkText}>Listings</h2>
       </NavLink>
       <NavLink
         exact

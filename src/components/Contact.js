@@ -52,8 +52,29 @@ const Div = styled.div`
       color: #1460e5;
     }
   }
-  @media screen and (min-width: 280px) and (max-width: 768px) {
-    /* Media queries styling here */
+
+  @media screen and (max-width: 768px) {
+    /* Responsive styles for screens with a maximum width of 768px */
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+
+    .footer {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .name {
+      font-size: 1rem; /* Decrease the font size for smaller screens */
+    }
+
+    .footer,
+    .contact-info,
+    .creator {
+      font-size: 1rem; /* Decrease the font size for smaller screens */
+    }
   }
 `;
 
