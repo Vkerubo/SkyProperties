@@ -140,7 +140,7 @@ function BuyersHomePage({ property }) {
         button {
           padding: 8px 16px;
           font-size: 16px;
-          background-color: #3c7fcf;
+          background-color: #315e6b;
           color: #fff;
           border: none;
           border-radius: 4px;
@@ -186,7 +186,7 @@ function BuyersHomePage({ property }) {
 
         .property .address-link {
           cursor: pointer;
-          color: #3c7fcf;
+          color: #315e6b;
           text-decoration: underline;
         }
 
@@ -199,7 +199,7 @@ function BuyersHomePage({ property }) {
         }
 
         .modal-wrapper button {
-          background-color: #3c7fcf;
+          background-color: #315e6b;
           color: #fff;
           border: none;
           border-radius: 4px;
