@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { FaHome } from "react-icons/fa";
 
 function Navbar() {
   const navRef = useRef();
@@ -15,7 +16,7 @@ function Navbar() {
       </div>
       <nav ref={navRef}>
         <a href="/" style={linkStyle}>
-          Home
+          <FaHome style={{ color: linkStyle.color }} />
         </a>
         <a href="/login" style={linkStyle}>
           Login
