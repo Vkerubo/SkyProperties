@@ -9,7 +9,7 @@ import LandingHome from "./components/LandingHome";
 import Seller from "./components/Seller";
 import { Buyer } from "./components/Buyer";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
-
+import EstimatePropertyPage from "./components/EstimatePropertyPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -34,6 +34,7 @@ function App() {
           <Route path="/login">
             <LoginPage setUser={setUser} />
           </Route>
+          <Route path="/estimate" component={EstimatePropertyPage} />
           <Route path="/">
             <LandingHome />
           </Route>

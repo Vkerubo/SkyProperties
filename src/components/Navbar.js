@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { FaHome } from "react-icons/fa";
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 
 const Header = styled.header`
   background-color: #333;
@@ -32,7 +32,7 @@ const Nav = styled.nav`
   display: flex;
 `;
 
-const HomeLink = styled.a`
+const HomeLink = styled(Link)`
   color: #fff;
   text-decoration: none;
   margin-right: 20px;
@@ -44,7 +44,7 @@ const HomeLink = styled.a`
   }
 `;
 
-const OtherLink = styled.a`
+const OtherLink = styled(Link)`
   color: #fff;
   text-decoration: none;
   margin-right: 10px;
@@ -69,11 +69,12 @@ function Navbar() {
         <Title>Sky Properties</Title>
       </LogoContainer>
       <Nav ref={navRef}>
-        <HomeLink href="/">
+        <HomeLink to="/">
           <FaHome />
         </HomeLink>
-        <OtherLink href="/login">Login</OtherLink>
-        <OtherLink href="/signup">Sign Up</OtherLink>
+        <OtherLink to="/login">Login</OtherLink>
+        <OtherLink to="/signup">Sign Up</OtherLink>
+        <OtherLink to="/estimate">Get Estimate</OtherLink>
       </Nav>
     </Header>
   );
