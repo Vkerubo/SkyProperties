@@ -116,7 +116,6 @@ function BuyersHomePage({ property }) {
       <div className="property-container">{theProperties}</div>
       <style>{`
         .container {
-          width: 100%; /* Set the container width to 100% */
           padding: 20px;
           background-color: #f9f9f9;
           color: #333;
