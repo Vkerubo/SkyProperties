@@ -1,7 +1,7 @@
 import React from "react";
 
 export const Favorites = ({ favorites }) => {
-  
+
 const handleDelete = (favoriteId) => {
   fetch(`/favorites/${favoriteId}`, {
     method: "DELETE",
@@ -60,7 +60,7 @@ const handleDelete = (favoriteId) => {
             grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
             gap: 20px;
           }
-          
+
           .favorite-house {
             display: flex;
             flex-direction: column;
@@ -69,14 +69,14 @@ const handleDelete = (favoriteId) => {
             background-color: #f5f5f5;
             border-radius: 8px;
           }
-          
+
           .house-title {
             margin: 0;
             margin-bottom: 10px;
             font-size: 18px;
             font-weight: bold;
           }
-          
+
           .house-image {
             width: 100%;
             height: 300px;
@@ -84,11 +84,11 @@ const handleDelete = (favoriteId) => {
             border-radius: 8px;
             margin-bottom: 10px;
           }
-          
+
           .house-details {
             margin-bottom: 10px;
           }
-          
+
           .house-address,
           .house-price,
           .house-bedrooms,
@@ -96,7 +96,7 @@ const handleDelete = (favoriteId) => {
             margin: 0;
             margin-bottom: 5px;
           }
-          
+
           .delete-button {
             background-color: #007bff;
             color: #fff;
@@ -105,7 +105,7 @@ const handleDelete = (favoriteId) => {
             padding: 8px 16px;
             cursor: pointer;
           }
-          
+
           .no-favorites-message {
             color: red;
           }

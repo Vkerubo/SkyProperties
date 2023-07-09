@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function BuyersHomePage({ property }) {
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("");
+  const [favorites, setFavorites] = useState([]);
+  const history = useHistory();
 
   const toggleModal = (selectedProperty) => {
     setSelectedProperty(selectedProperty);
@@ -26,29 +29,47 @@ function BuyersHomePage({ property }) {
     setSortBy(e.target.value);
   };
 
-  const handleCreate = (propertyId) => {
-    fetch(`/favorites`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: propertyId,
-      }),
-    })
+  const fetchFavorites = () => {
+    fetch("/favorites")
       .then((response) => {
-        if (response.status === 201) {
-          alert("Property added to favorites");
-          // handle success response, such as updating the UI
+        if (response.ok) {
+          return response.json();
         } else {
-          throw new Error("Error adding property to favorites");
+          throw new Error("Error fetching favorites");
         }
       })
+      .then((data) => {
+        setFavorites(data);
+      })
       .catch((error) => {
-        // handle error
-        console.error("Error adding property to favorites:", error);
+        console.error("Error fetching favorites:", error);
       });
   };
+
+   const handleCreate = (propertyId) => {
+     fetch(`/favorites`, {
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+       },
+       body: JSON.stringify({
+         id: propertyId,
+       }),
+     })
+       .then((response) => {
+         if (response.status === 201) {
+           alert("Property added to favorites");
+           // Navigate to the favorites page
+           history.push("/buyer/favorites");
+         } else {
+           throw new Error("Error adding property to favorites");
+         }
+       })
+       .catch((error) => {
+         // handle error
+         console.error("Error adding property to favorites:", error);
+       });
+   };
 
   const sortProperties = (properties) => {
     switch (sortBy) {
