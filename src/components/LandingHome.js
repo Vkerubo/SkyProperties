@@ -20,13 +20,14 @@ const BackgroundImage = styled.div`
 
 const Subtitle = styled.p`
   font-size: 25px;
-  margin-bottom: 30px;
+  margin-bottom: -19px;
   padding: 10px;
 `;
 
 const Quote = styled.p`
   font-style: italic;
   font-size: 20px;
+  margin-left: 10px;
 `;
 
 const ContentWrapper = styled.div`
@@ -35,6 +36,7 @@ const ContentWrapper = styled.div`
   left: 0;
   text-align: left;
   color: black;
+  margin-top: -20px;
 `;
 
 const SlidingPhotos = styled.div`
@@ -162,9 +164,14 @@ const LandingHome = () => {
       <BackgroundImage>
         <ContentWrapper>
           <Subtitle>
-            Welcome to our House Dealership. Find your dream home today...
+            <h4>
+            Explore thousands of listings, connect with sellers, and make
+            informed decisions.
+            </h4>
           </Subtitle>
-          <Quote>"Home is where your story begins."</Quote>
+          <Quote>
+            "Find your dream home now!."
+          </Quote>
         </ContentWrapper>
         <CardContainer>
           <CardTitle>FREE HOME VALUATION</CardTitle>
