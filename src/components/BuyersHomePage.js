@@ -26,6 +26,30 @@ function BuyersHomePage({ property }) {
     setSortBy(e.target.value);
   };
 
+  const handleCreate = (propertyId) => {
+    fetch(`/favorites`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: propertyId,
+      }),
+    })
+      .then((response) => {
+        if (response.status === 201) {
+          alert("Property added to favorites");
+          // handle success response, such as updating the UI
+        } else {
+          throw new Error("Error adding property to favorites");
+        }
+      })
+      .catch((error) => {
+        // handle error
+        console.error("Error adding property to favorites:", error);
+      });
+  };
+
   const sortProperties = (properties) => {
     switch (sortBy) {
       case "alphabetical":
@@ -53,6 +77,7 @@ function BuyersHomePage({ property }) {
     return (
       <div key={house.id} className="property">
         <h2>{house.title}</h2>
+        <button onClick={() => handleCreate(house.id)}>Add to Favorites</button>
         <img src={house.image} alt="property" className="property-image" />
         <p className="address">
           <em

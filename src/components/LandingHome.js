@@ -20,7 +20,7 @@ const BackgroundImage = styled.div`
 
 const Subtitle = styled.p`
   font-size: 25px;
-  margin-bottom: -19px;
+  margin-bottom: -50px;
   padding: 10px;
 `;
 
@@ -36,7 +36,7 @@ const ContentWrapper = styled.div`
   left: 0;
   text-align: left;
   color: black;
-  margin-top: -20px;
+  margin-top: -60px;
 `;
 
 const SlidingPhotos = styled.div`
