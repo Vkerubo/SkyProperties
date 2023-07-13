@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Styles } from "styled-components";
+// import { Styles } from "styled-components";
 
 export const SellersHomePage = ({ seller }) => {
   const [sellerProperties, setSellerProperties] = useState(seller?.properties);

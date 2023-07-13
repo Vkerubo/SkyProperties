@@ -5,7 +5,7 @@ function BuyersHomePage({ property }) {
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("");
-  const [favorites, setFavorites] = useState([]);
+  // const setFavorites = useState([]);
   const history = useHistory();
 
   const toggleModal = (selectedProperty) => {
@@ -29,22 +29,22 @@ function BuyersHomePage({ property }) {
     setSortBy(e.target.value);
   };
 
-  const fetchFavorites = () => {
-    fetch("/favorites")
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Error fetching favorites");
-        }
-      })
-      .then((data) => {
-        setFavorites(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching favorites:", error);
-      });
-  };
+  // const fetchFavorites = () => {
+  //   fetch("/favorites")
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json();
+  //       } else {
+  //         throw new Error("Error fetching favorites");
+  //       }
+  //     })
+  //     .then((data) => {
+  //       setFavorites(data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching favorites:", error);
+  //     });
+  // };
 
    const handleCreate = (propertyId) => {
      fetch(`/favorites`, {
